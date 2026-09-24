@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Lanternbound</title>
+  <meta name="description" content="A tiny browser RPG about a very small light in a very big dark.">
+  <meta name="theme-color" content="#0d0a16">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' shape-rendering='crispEdges'%3E%3Cpath fill='%23ff9d3b' d='M5 1h1v2h1v1h1v1h1v4H8v1H3V9H2V5h1V4h1V3h1z'/%3E%3Cpath fill='%23ffe08a' d='M5 5h2v1h1v3H4V6h1z'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-screen="title">
+  <div id="app">
+    <!-- Title -->
+    <section id="screen-title" class="screen">
+      <canvas id="title-bg" class="px" aria-hidden="true"></canvas>
+      <div class="title-vignette"></div>
+      <div class="title-inner">
+        <div id="title-flame"></div>
+        <h1 id="title-logo" aria-label="Lanternbound"></h1>
+        <p class="subtitle">A tiny RPG about a very small light in a very big dark.</p>
+        <div id="title-buttons"></div>
+        <p class="credits">Hand-made pixels, synthesised sounds, zero frameworks.</p>
+      </div>
+    </section>
+
+    <!-- Character creation -->
+    <section id="screen-create" class="screen" hidden>
+      <div class="create panel">
+        <h2 class="create-h">Who carries the lantern?</h2>
+        <div class="name-row">
+          <label for="create-name">Name</label>
+          <input id="create-name" maxlength="16" autocomplete="off" spellcheck="false">
+          <button id="create-dice" class="btn small" type="button" title="Random name">Reroll</button>
+        </div>
+        <h3>Class</h3>
+        <div id="create-classes" class="card-row"></div>
+        <h3>Keepsake <span class="muted">a small comfort from home</span></h3>
+        <div id="create-keepsakes" class="keep-row"></div>
+        <div class="create-foot">
+          <button id="create-back" class="btn ghost" type="button">Back</button>
+          <button id="create-start" class="btn primary big" type="button">Light the lantern</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Game -->
+    <section id="screen-game" class="screen" hidden>
+      <header id="hud" class="panel">
+        <div id="hud-stats"></div>
+        <nav id="menu" aria-label="Menu">
+          <button id="btn-bag" class="btn small" type="button" title="Bag & equipment (I)">Bag</button>
+          <button id="btn-hero" class="btn small" type="button" title="Hero sheet (C)">Hero</button>
+          <button id="btn-save" class="btn small" type="button" title="Save / load">Save</button>
+          <button id="btn-sound" class="btn small ghost" type="button" title="Toggle sound">Sound</button>
+          <button id="btn-title" class="btn small ghost" type="button" title="Back to title (autosaves)">Title</button>
+        </nav>
+      </header>
+      <main id="stage">
+        <canvas id="bg" class="px" aria-hidden="true"></canvas>
+        <div id="actors"></div>
+        <canvas id="particles" aria-hidden="true"></canvas>
+        <div id="darkness" aria-hidden="true"></div>
+        <div id="fx" aria-hidden="true"></div>
+        <div id="banner"></div>
+        <div id="flash" aria-hidden="true"></div>
+      </main>
+      <section id="bottom">
+        <div id="log" class="panel" aria-live="polite"></div>
+        <div id="actions" class="panel"></div>
+      </section>
+    </section>
+
+    <!-- Overlays -->
+    <div id="dialogue" class="panel" hidden>
+      <div id="dlg-portrait"></div>
+      <div class="dlg-body">
+        <div id="dlg-name"></div>
+        <div id="dlg-text"></div>
+        <div id="dlg-options"></div>
+        <div id="dlg-hint" hidden>▼ click / space</div>
+      </div>
+    </div>
+    <div id="modals"></div>
+    <div id="toasts" aria-live="polite"></div>
+    <div id="fade"></div>
+  </div>
+
+  <script src="js/sprites.js"></script>
+  <script src="js/audio.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/core.js"></script>
+  <script src="js/battle.js"></script>
+  <script src="js/world.js"></script>
+</body>
+</html>
